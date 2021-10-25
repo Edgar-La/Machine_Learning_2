@@ -7,7 +7,7 @@ from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.model_selection import GridSearchCV, KFold
 import time
 
-def dataset_SVR_metrics_ELA(dataset_name = 'regression-datasets/mpg.csv', iter = 5, k_folds= 2, save_csv_name = 'mpg_metrics.csv'):
+def dataset_SVR_metrics_ELA(dataset_name, iter = 5, k_folds= 2, save_csv_name = 'dataset_metrics.csv'):
     
     #Guardamos el tiempo en una variable para contar el tiempo que le toma correr
     startTime = time.perf_counter()
@@ -18,7 +18,7 @@ def dataset_SVR_metrics_ELA(dataset_name = 'regression-datasets/mpg.csv', iter =
     x = np.array(df.iloc[:,0:n_cols-1])
     y = np.array(df.iloc[:,n_cols-1])
     
-    
+    print(df); print('Dimensions dataset: ', n_cols, '\n\n')
     #Diccionario sobre el cual GridSearch buscara los mejores parametros
     
     parameters = {'kernel': ['rbf'],
