@@ -30,7 +30,7 @@ def dataset_SVR_metrics_ELA(dataset_name, iter = 5, k_folds= 2, save_csv_name = 
     svr = SVR(kernel = 'rbf')
     
     #Creamos un dataset donde se gaudararan las metricas de cada iteracion
-    df_metrics = pd.DataFrame(columns = ['Parameters', 'r2', 'RMSE', 'MSE', 'cv', 'time'])
+    df_metrics = pd.DataFrame(columns = ['C', 'epsilon', 'gamma', 'r2', 'RMSE', 'MSE', 'cv', 'time'])
     
     for i in range(iter):
         startTime_iteration = time.perf_counter()
@@ -44,8 +44,8 @@ def dataset_SVR_metrics_ELA(dataset_name, iter = 5, k_folds= 2, save_csv_name = 
         #Hacemos el predict y calculamos las metricas correspondientes
         y_pred = best_svr.predict(x)
         r_2 = r2_score(y, y_pred)
-        RMSE = mean_squared_error(y, y_pred)
-        MSE = mean_squared_error(y, y_pred, squared=False)
+        RMSE = mean_squared_error(y, y_pred, squared=False)
+        MSE = mean_squared_error(y, y_pred)
     
         #Contamos e tiempo que toma cada iteracion
         endTime_iteration = time.perf_counter()
@@ -56,7 +56,7 @@ def dataset_SVR_metrics_ELA(dataset_name, iter = 5, k_folds= 2, save_csv_name = 
         print('###############################################################################################')
     
         #Guardamos lo obtenido en un dataset
-        df_metrics.loc[i] = [best_svr, r_2, RMSE, MSE, folds.get_n_splits(), endTime_iteration-startTime_iteration]
+        df_metrics.loc[i] = [best_svr.C, best_svr.epsilon, best_svr.gamma, r_2, RMSE, MSE, folds.get_n_splits(), endTime_iteration-startTime_iteration]
      
     
     #Guardamos el dataframe de metricas en un archivo .csv
