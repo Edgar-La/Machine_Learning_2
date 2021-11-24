@@ -102,5 +102,5 @@ ax3.set(xlabel='register', ylabel='Class')
 
 
 
-fig.savefig('regression_comparison.png', dpi = 400)
-#fig.savefig('regression_comparison.png')
+#fig.savefig('regression_comparison.png', dpi = 400)
+fig.savefig('regression_comparison.png')
