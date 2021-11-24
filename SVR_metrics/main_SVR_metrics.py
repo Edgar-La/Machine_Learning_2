@@ -43,7 +43,7 @@ Hay que indicar el nombre del dataset a leer y el nombre con el que sera guardad
 
 
 #Seccion para Lasso (o Ridge)
-best_Lasso_estimator_ELA(dataset_name = 'regression-datasets/pyrim.csv', id2save_metrics = 'Lasso_pyrim',
+best_Lasso_estimator_ELA(dataset_name = 'regression-datasets/housing.csv', id2save_metrics = 'Lasso_housing',
                         estimator_ = lasso, iter = 30, k_folds= 10, parameters = parameters2_)
 
 
