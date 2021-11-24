@@ -62,6 +62,12 @@ y_pyrim_lasso = Lasso(alpha=alpha_pyrim, tol=tol_pyrim).fit(x_pyrim, y_pyrim).pr
 ###############################################################################
 
 
+legends = ['Original data', 'SVR', 'Lasso']
+df_housing_ = pd.DataFrame(columns = legends, data = np.array([y_housing, y_housing_svr, y_housing_lasso]).T).sort_values(by=legends[0])
+df_mpg_ = pd.DataFrame(columns = legends, data = np.array([y_mpg, y_mpg_svr, y_mpg_lasso]).T).sort_values(by=legends[0])
+df_pyrim_ = pd.DataFrame(columns = legends, data = np.array([y_pyrim, y_pyrim_svr, y_pyrim_lasso]).T).sort_values(by=legends[0])
+
+
 #Realizamos los gráficos
 ###############################################################################
 fig = plt.figure(figsize = (20,10))
@@ -74,25 +80,26 @@ ax3 = fig.add_subplot(1,3,3)
 ax3.set_title('Dataset pyrim')
 
 
-ax1.plot(y_housing)
-ax1.plot(y_housing_svr)
-ax1.plot(y_housing_lasso)
-ax2.plot(y_mpg)
-ax2.plot(y_mpg_svr)
-ax2.plot(y_mpg_lasso)
-ax3.plot(y_pyrim)
-ax3.plot(y_pyrim_svr)
-ax3.plot(y_pyrim_lasso)
+
+ax1.plot(np.array(df_housing_[legends[0]]))
+ax1.plot(np.array(df_housing_[legends[1]]))
+ax1.plot(np.array(df_housing_[legends[2]]))
+ax2.plot(np.array(df_mpg_[legends[0]]))
+ax2.plot(np.array(df_mpg_[legends[1]]))
+ax2.plot(np.array(df_mpg_[legends[2]]))
+ax3.plot(np.array(df_pyrim_[legends[0]]))
+ax3.plot(np.array(df_pyrim_[legends[1]]))
+ax3.plot(np.array(df_pyrim_[legends[2]]))
 
 
 
-ax1.legend(['Original data', 'SVR', 'Lasso'])
+ax1.legend(legends)
 ax1.set(xlabel='register', ylabel='Class')
-ax2.legend(['Original data', 'SVR', 'Lasso'])
+ax2.legend(legends)
 ax2.set(xlabel='register', ylabel='Class')
-ax3.legend(['Original data', 'SVR', 'Lasso'])
+ax3.legend(legends)
 ax3.set(xlabel='register', ylabel='Class')
 
 
 
-
+fig.savefig('regression_comparison.png', dpi = 400)
