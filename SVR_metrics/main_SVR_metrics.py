@@ -18,13 +18,15 @@ parameters1_ = {'C': [2**-4, 2**-3, 2**-2, 2**-1, 2**0, 2**1, 2**2, 2**3, 2**4],
               'epsilon': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]}
 
 #Diccionario sobre el cual GridSearch buscara los mejores parametros para la regressión Lasso (o Ridge)
-parameters2_ = {'alpha': np.logspace(-4,-.5,30)}
+#parameters2_ = {'alpha': [0.000401280703194, 0.001610262027561, 0.0021261123339, 0.001219570460159, 0.003706512910922]}
+#parameters2_ = {'alpha': [.25, .5, .75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5]}
+parameters2_ = {'alpha': np.linspace(.00123, .001235, 30)}
 
 #Creamos un modelo SVR
 svr = SVR(kernel = 'rbf')
 
 #Creamos un modelo Lasso
-lasso = Lasso(max_iter = 50000)
+lasso = Lasso()
 ridge = Ridge(max_iter = 50000)
 
 '''###############################################################################################################
