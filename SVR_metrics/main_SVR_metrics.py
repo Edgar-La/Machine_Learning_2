@@ -18,8 +18,7 @@ parameters1_ = {'C': [2**-4, 2**-3, 2**-2, 2**-1, 2**0, 2**1, 2**2, 2**3, 2**4],
               'epsilon': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]}
 
 #Diccionario sobre el cual GridSearch buscara los mejores parametros para la regressión Lasso (o Ridge)
-parameters2_ = {'alpha': np.logspace(-4,-.5,30),
-                'tol': np.logspace(-5,-.6,10)}
+parameters2_ = {'alpha': np.logspace(-4,-.5,30)}
 
 #Creamos un modelo SVR
 svr = SVR(kernel = 'rbf')
@@ -43,7 +42,7 @@ Hay que indicar el nombre del dataset a leer y el nombre con el que sera guardad
 
 #Seccion para Lasso (o Ridge)
 best_Lasso_estimator_ELA(dataset_name = 'regression-datasets/pyrim.csv', id2save_metrics = 'Lasso_pyrim',
-                        estimator_ = ridge, iter = 30, k_folds= 10, parameters = parameters2_)
+                        estimator_ = lasso, iter = 30, k_folds= 10, parameters = parameters2_)
 
 
 

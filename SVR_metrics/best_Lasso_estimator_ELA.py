@@ -30,7 +30,7 @@ def best_Lasso_estimator_ELA(dataset_name, id2save_metrics = 'DatasetMetrics',
     
     
     #Creamos un dataset donde se guardaran las metricas de cada iteracion
-    df_metrics = pd.DataFrame(columns = ['alpha', 'tol', 'r2', 'RMSE', 'MSE', 'cv', 'time'])
+    df_metrics = pd.DataFrame(columns = ['alpha', 'r2', 'RMSE', 'MSE', 'cv', 'time'])
     
     for i in range(iter):
         startTime_iteration = time.perf_counter()
@@ -56,7 +56,7 @@ def best_Lasso_estimator_ELA(dataset_name, id2save_metrics = 'DatasetMetrics',
         print('###############################################################################################')
     
         #Guardamos lo obtenido en un dataset
-        df_metrics.loc[i] = [best_svr.alpha, best_svr.tol, r_2, RMSE, MSE, folds.get_n_splits(), endTime_iteration-startTime_iteration]
+        df_metrics.loc[i] = [best_svr.alpha, r_2, RMSE, MSE, folds.get_n_splits(), endTime_iteration-startTime_iteration]
      
     
     #Guardamos el dataframe de metricas en un archivo .csv

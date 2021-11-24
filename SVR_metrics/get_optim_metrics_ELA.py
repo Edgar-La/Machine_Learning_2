@@ -31,9 +31,8 @@ def get_optim_metrics1_ELA(file_to_read, file_to_create):
 def get_optim_metrics2_ELA(file_to_read, file_to_create):
     df = pd.read_csv(file_to_read)
 
-    cols = ['alpha_mean', 'tol_mean', 'r2_mean', 'r2_mad', 'RMSE_mean', 'RMSE_mad', 'MSE_mean', 'MSE_mad', 'cv', 'time_mean']
+    cols = ['alpha_mean', 'r2_mean', 'r2_mad', 'RMSE_mean', 'RMSE_mad', 'MSE_mean', 'MSE_mad', 'cv', 'time_mean']
     data_ = [[df['alpha'].mean(),
-              df['tol'].mean(),
               df['r2'].mean(),
               df['r2'].mad(),
               df['RMSE'].mean(),

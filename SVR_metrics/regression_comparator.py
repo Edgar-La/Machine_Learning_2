@@ -50,15 +50,15 @@ y_pyrim_svr = SVR(C=C_pyrim, epsilon=epsilon_pyrim, gamma=gamma_pyrim).fit(x_pyr
 ###############################################################################
 df_housing_lasso = pd.read_csv('metrics_datasets/Lasso_housing_metrics_Optim.csv')
 alpha_housing = df_housing_lasso.iloc[0,0]; tol_housing = df_housing_lasso.iloc[0,1]
-y_housing_lasso = Lasso(alpha=alpha_housing, tol=tol_housing).fit(x_housing, y_housing).predict(x_housing)
+y_housing_lasso = Lasso(alpha=alpha_housing).fit(x_housing, y_housing).predict(x_housing)
 
-df_mpg_lasso = pd.read_csv('metrics_datasets/Lasso_housing_metrics_Optim.csv')
+df_mpg_lasso = pd.read_csv('metrics_datasets/Lasso_mpg_metrics_Optim.csv')
 alpha_mpg = df_mpg_lasso.iloc[0,0]; tol_mpg = df_mpg_lasso.iloc[0,1]
-y_mpg_lasso = Lasso(alpha=alpha_mpg, tol=tol_mpg).fit(x_mpg, y_mpg).predict(x_mpg)
+y_mpg_lasso = Lasso(alpha=alpha_mpg).fit(x_mpg, y_mpg).predict(x_mpg)
 
-df_pyrim_lasso = pd.read_csv('metrics_datasets/Lasso_housing_metrics_Optim.csv')
+df_pyrim_lasso = pd.read_csv('metrics_datasets/Lasso_pyrim_metrics_Optim.csv')
 alpha_pyrim = df_pyrim_lasso.iloc[0,0]; tol_pyrim = df_pyrim_lasso.iloc[0,1]
-y_pyrim_lasso = Lasso(alpha=alpha_pyrim, tol=tol_pyrim).fit(x_pyrim, y_pyrim).predict(x_pyrim)
+y_pyrim_lasso = Lasso(alpha=alpha_pyrim).fit(x_pyrim, y_pyrim).predict(x_pyrim)
 ###############################################################################
 
 
@@ -102,4 +102,5 @@ ax3.set(xlabel='register', ylabel='Class')
 
 
 
-fig.savefig('regression_comparison.png', dpi = 400)
+#fig.savefig('regression_comparison.png', dpi = 400)
+fig.savefig('regression_comparison.png')
