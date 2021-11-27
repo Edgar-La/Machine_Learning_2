@@ -1,0 +1,2 @@
+learning_rate_mean,n_estimators_mean,r2_mean,r2_mad,RMSE_mean,RMSE_mad,MSE_mean,MSE_mad,cv,time_mean
+0.09,100,0.993870067826887,0.0,0.0099748579665703,0.0,9.949779145325196e-05,0.0,5.0,270.01387902800343
