@@ -55,8 +55,8 @@ Hay que indicar el nombre del dataset a leer y el nombre con el que sera guardad
 
 
 #Seccion para GBR
-best_GBR_estimator_ELA(dataset_name = 'regression-datasets/pyrim.csv', id2save_metrics = 'GBR_pyrim',
-                        estimator_ = gbr, iter = 30sni, k_folds= 10, parameters = parameters3_)
+best_GBR_estimator_ELA(dataset_name = 'regression-datasets/housing.csv', id2save_metrics = 'GBR_housing',
+                        estimator_ = gbr, iter = 30, k_folds= 10, parameters = parameters3_)
 
 
 
