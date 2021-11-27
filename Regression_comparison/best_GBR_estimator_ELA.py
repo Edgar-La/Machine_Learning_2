@@ -5,9 +5,9 @@ import numpy as np
 from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.model_selection import GridSearchCV, KFold
 import time
-from get_optim_metrics_ELA import get_optim_metrics1_ELA
+from get_optim_metrics_ELA import get_optim_metrics3_ELA
 
-def best_SVR_estimator_ELA(dataset_name, id2save_metrics = 'DatasetMetrics',
+def best_GBR_estimator_ELA(dataset_name, id2save_metrics = 'DatasetMetrics',
                            estimator_ = None, iter = 5, k_folds= 2, parameters = None):
     
     #Guardamos el tiempo en una variable para contar el tiempo que le toma correr
@@ -24,7 +24,7 @@ def best_SVR_estimator_ELA(dataset_name, id2save_metrics = 'DatasetMetrics',
     
     
     #Creamos un dataset donde se guardaran las metricas de cada iteracion
-    df_metrics = pd.DataFrame(columns = ['C', 'epsilon', 'gamma', 'r2', 'RMSE', 'MSE', 'cv', 'time'])
+    df_metrics = pd.DataFrame(columns = ['learning_rate', 'n_estimators', 'r2', 'RMSE', 'MSE', 'cv', 'time'])
     
     for i in range(iter):
         startTime_iteration = time.perf_counter()
@@ -50,7 +50,7 @@ def best_SVR_estimator_ELA(dataset_name, id2save_metrics = 'DatasetMetrics',
         print('###############################################################################################')
     
         #Guardamos lo obtenido en un dataset
-        df_metrics.loc[i] = [best_svr.C, best_svr.epsilon, best_svr.gamma, r_2, RMSE, MSE, folds.get_n_splits(), endTime_iteration-startTime_iteration]
+        df_metrics.loc[i] = [best_svr.learning_rate, best_svr.n_estimators, r_2, RMSE, MSE, folds.get_n_splits(), endTime_iteration-startTime_iteration]
      
     
     #Guardamos el dataframe de metricas en un archivo .csv
@@ -60,5 +60,5 @@ def best_SVR_estimator_ELA(dataset_name, id2save_metrics = 'DatasetMetrics',
     print('\nTotal time: {:6.3f} seconds'.format(time.perf_counter() - startTime))
     
     #Esta funccion calcula las medias y las errores del dataset de metricas obtenido con la linea 57
-    get_optim_metrics1_ELA(file_to_read= 'metrics_datasets/'+id2save_metrics+'_metrics.csv', 
+    get_optim_metrics3_ELA(file_to_read= 'metrics_datasets/'+id2save_metrics+'_metrics.csv', 
                           file_to_create = 'metrics_datasets/'+id2save_metrics+'_metrics_Optim.csv')

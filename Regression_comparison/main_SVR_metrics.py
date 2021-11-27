@@ -26,14 +26,16 @@ parameters2_ = {'alpha': np.linspace(.00123, .001235, 30)}
 
 #Diccionario sobre el cual GridSearch buscara los mejores parametros para la GBR
 parameters3_ = {'learning_rate': np.linspace(.01, .1, 10),
-              'n_estimator': np.arange(100,200, 10)}
+              'n_estimators': np.arange(100,200, 10)}
 
 #Creamos un modelo SVR
 svr = SVR(kernel = 'rbf')
 
 #Creamos un modelo Lasso
 lasso = Lasso()
-#)
+
+#Creamos un modelo GBR
+gbr = GradientBoostingRegressor()
 
 '''###############################################################################################################
 Esta seccion llama a la función que efectua el GridSearchCV y nos develve el un dataset de los mejores parametros
@@ -48,13 +50,13 @@ Hay que indicar el nombre del dataset a leer y el nombre con el que sera guardad
 
 
 #Seccion para Lasso (o Ridge)
-best_Lasso_estimator_ELA(dataset_name = 'regression-datasets/housing.csv', id2save_metrics = 'Lasso_housing',
-                        estimator_ = lasso, iter = 30, k_folds= 10, parameters = parameters2_)
+#best_Lasso_estimator_ELA(dataset_name = 'regression-datasets/housing.csv', id2save_metrics = 'Lasso_housing',
+#                        estimator_ = lasso, iter = 30, k_folds= 10, parameters = parameters2_)
 
 
 #Seccion para GBR
 best_GBR_estimator_ELA(dataset_name = 'regression-datasets/pyrim.csv', id2save_metrics = 'GBR_pyrim',
-                        estimator_ = lasso, iter = 30, k_folds= 10, parameters = parameters3_)
+                        estimator_ = gbr, iter = 30sni, k_folds= 10, parameters = parameters3_)
 
 
 

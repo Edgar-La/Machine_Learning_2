@@ -44,3 +44,22 @@ def get_optim_metrics2_ELA(file_to_read, file_to_create):
     df_metrics_optim = pd.DataFrame(data = data_, columns = cols, index = None)
     
     df_metrics_optim.to_csv(file_to_create, index = False)
+    
+    
+def get_optim_metrics3_ELA(file_to_read, file_to_create):
+    df = pd.read_csv(file_to_read)
+
+    cols = ['learning_rate_mean', 'n_estimators_mean', 'r2_mean', 'r2_mad', 'RMSE_mean', 'RMSE_mad', 'MSE_mean', 'MSE_mad', 'cv', 'time_mean']
+    data_ = [[df['learning_rate'].mean(),
+              round(df['n_estimators'].mean()),
+              df['r2'].mean(),
+              df['r2'].mad(),
+              df['RMSE'].mean(),
+              df['RMSE'].mad(),
+              df['MSE'].mean(),
+              df['MSE'].mad(),
+              df['cv'].mean(),
+              df['time'].mean()]]
+    df_metrics_optim = pd.DataFrame(data = data_, columns = cols, index = None)
+    
+    df_metrics_optim.to_csv(file_to_create, index = False)
