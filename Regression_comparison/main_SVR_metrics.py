@@ -59,8 +59,8 @@ Hay que indicar el nombre del dataset a leer y el nombre con el que sera guardad
 
 
 #Seccion para GBR
-best_GBR_estimator_ELA(dataset_name = 'regression-datasets/mpg.csv', id2save_metrics = 'LGBMR_mpg',
-                        estimator_ = lgbmr, iter = 30, k_folds= 10, parameters = parameters3_)
+best_GBR_estimator_ELA(dataset_name = 'regression-datasets/pyrim.csv', id2save_metrics = 'XGB_pyrim',
+                        estimator_ = xgb, iter = 1, k_folds= 2, parameters = parameters3_)
 
 
 
