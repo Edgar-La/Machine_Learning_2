@@ -72,6 +72,7 @@ df_pyrim_ = pd.DataFrame(columns = legends, data = np.array([y_pyrim, y_pyrim_sv
 ###############################################################################
 fig = plt.figure(figsize = (20,10))
 
+
 ax1 = fig.add_subplot(1,3,1)
 ax1.set_title('Dataset housing')
 ax2 = fig.add_subplot(1,3,2)
