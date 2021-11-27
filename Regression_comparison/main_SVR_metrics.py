@@ -13,6 +13,8 @@ from best_GBR_estimator_ELA import best_GBR_estimator_ELA
 from sklearn.svm import SVR
 from sklearn.linear_model import Lasso, Ridge
 from sklearn.ensemble import GradientBoostingRegressor
+from xgboost import XGBRegressor
+from lightgbm import LGBMRegressor
 
 #Diccionario sobre el cual GridSearch buscara los mejores parametros para la SVR
 parameters1_ = {'C': [2**-4, 2**-3, 2**-2, 2**-1, 2**0, 2**1, 2**2, 2**3, 2**4],
@@ -36,6 +38,8 @@ lasso = Lasso()
 
 #Creamos un modelo GBR
 gbr = GradientBoostingRegressor()
+xgb = XGBRegressor()
+lgbmr = LGBMRegressor()
 
 '''###############################################################################################################
 Esta seccion llama a la función que efectua el GridSearchCV y nos develve el un dataset de los mejores parametros
@@ -55,8 +59,8 @@ Hay que indicar el nombre del dataset a leer y el nombre con el que sera guardad
 
 
 #Seccion para GBR
-best_GBR_estimator_ELA(dataset_name = 'regression-datasets/housing.csv', id2save_metrics = 'GBR_housing',
-                        estimator_ = gbr, iter = 30, k_folds= 10, parameters = parameters3_)
+best_GBR_estimator_ELA(dataset_name = 'regression-datasets/mpg.csv', id2save_metrics = 'LGBMR_mpg',
+                        estimator_ = lgbmr, iter = 30, k_folds= 10, parameters = parameters3_)
 
 
 
