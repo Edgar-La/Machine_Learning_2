@@ -64,17 +64,54 @@ y_pyrim_lasso = Lasso(alpha=alpha_pyrim).fit(x_pyrim, y_pyrim).predict(x_pyrim)
 
 #Generar y's con modelos GBR optimos
 ###############################################################################
+df_housing_gbr = pd.read_csv('metrics_datasets/GBR_housing_metrics_Optim.csv')
+learning_rate_housing_gbr = df_housing_gbr.iloc[0,0]; n_estimators_housing_gbr = df_housing_gbr.iloc[0,1]
+y_housing_gbr = GradientBoostingRegressor(learning_rate=learning_rate_housing_gbr, n_estimators=n_estimators_housing_gbr).fit(x_housing, y_housing).predict(x_housing)
+
+df_mpg_gbr = pd.read_csv('metrics_datasets/GBR_mpg_metrics_Optim.csv')
+learning_rate_mpg_gbr = df_mpg_gbr.iloc[0,0]; n_estimators_mpg_gbr = df_mpg_gbr.iloc[0,1]
+y_mpg_gbr = GradientBoostingRegressor(learning_rate=learning_rate_mpg_gbr, n_estimators=n_estimators_mpg_gbr).fit(x_mpg, y_mpg).predict(x_mpg)
+
 df_pyrim_gbr = pd.read_csv('metrics_datasets/GBR_pyrim_metrics_Optim.csv')
-learning_rate_pyrim = df_pyrim_gbr.iloc[0,0]; n_estimators_pyrim = df_pyrim_gbr.iloc[0,1]
-y_pyrim_gbr = GradientBoostingRegressor(learning_rate=learning_rate_pyrim, n_estimators=n_estimators_pyrim).fit(x_pyrim, y_pyrim).predict(x_pyrim)
+learning_rate_pyrim_gbr = df_pyrim_gbr.iloc[0,0]; n_estimators_pyrim_gbr = df_pyrim_gbr.iloc[0,1]
+y_pyrim_gbr = GradientBoostingRegressor(learning_rate=learning_rate_pyrim_gbr, n_estimators=n_estimators_pyrim_gbr).fit(x_pyrim, y_pyrim).predict(x_pyrim)
+###############################################################################
+
+#Generar y's con modelos LGBMR optimos
+###############################################################################
+df_housing_lgbmr = pd.read_csv('metrics_datasets/LGBMR_housing_metrics_Optim.csv')
+learning_rate_housing_lgbmr = df_housing_lgbmr.iloc[0,0]; n_estimators_housing_lgbmr = df_housing_lgbmr.iloc[0,1]
+y_housing_lgbmr = GradientBoostingRegressor(learning_rate=learning_rate_housing_lgbmr, n_estimators=n_estimators_housing_lgbmr).fit(x_housing, y_housing).predict(x_housing)
+
+df_mpg_lgbmr = pd.read_csv('metrics_datasets/LGBMR_mpg_metrics_Optim.csv')
+learning_rate_lgbmr = df_mpg_lgbmr.iloc[0,0]; n_estimators_lgbmr = df_mpg_lgbmr.iloc[0,1]
+y_mpg_lgbmr = GradientBoostingRegressor(learning_rate=learning_rate_lgbmr, n_estimators=n_estimators_lgbmr).fit(x_mpg, y_mpg).predict(x_mpg)
+
+df_pyrim_lgbmr = pd.read_csv('metrics_datasets/LGBMR_pyrim_metrics_Optim.csv')
+learning_rate_pyrim_lgbmr = df_pyrim_lgbmr.iloc[0,0]; n_estimators_pyrim_lgbmr = df_pyrim_lgbmr.iloc[0,1]
+y_pyrim_lgbmr = GradientBoostingRegressor(learning_rate=learning_rate_pyrim_lgbmr, n_estimators=n_estimators_pyrim_lgbmr).fit(x_pyrim, y_pyrim).predict(x_pyrim)
+###############################################################################
+
+#Generar y's con modelos XGB optimos
+###############################################################################
+df_housing_xgb = pd.read_csv('metrics_datasets/XGB_housing_metrics_Optim.csv')
+learning_rate_housing_xgb = df_housing_xgb.iloc[0,0]; n_estimators_housing_xgb = df_housing_xgb.iloc[0,1]
+y_housing_xgb = GradientBoostingRegressor(learning_rate=learning_rate_housing_xgb, n_estimators=n_estimators_housing_xgb).fit(x_housing, y_housing).predict(x_housing)
+
+df_mpg_xgb = pd.read_csv('metrics_datasets/XGB_mpg_metrics_Optim.csv')
+learning_rate_xgb = df_mpg_xgb.iloc[0,0]; n_estimators_xgb = df_mpg_xgb.iloc[0,1]
+y_mpg_xgb = GradientBoostingRegressor(learning_rate=learning_rate_xgb, n_estimators=n_estimators_xgb).fit(x_mpg, y_mpg).predict(x_mpg)
+
+df_pyrim_xgb = pd.read_csv('metrics_datasets/XGB_pyrim_metrics_Optim.csv')
+learning_rate_pyrim_xgb = df_pyrim_xgb.iloc[0,0]; n_estimators_pyrim_xgb = df_pyrim_xgb.iloc[0,1]
+y_pyrim_xgb = GradientBoostingRegressor(learning_rate=learning_rate_pyrim_xgb, n_estimators=n_estimators_pyrim_xgb).fit(x_pyrim, y_pyrim).predict(x_pyrim)
 ###############################################################################
 
 
-legends = ['Original data', 'SVR', 'Lasso']
-legends2 = ['Original data', 'SVR', 'Lasso', 'GBR']
-df_housing_ = pd.DataFrame(columns = legends, data = np.array([y_housing, y_housing_svr, y_housing_lasso]).T).sort_values(by=legends[0])
-df_mpg_ = pd.DataFrame(columns = legends, data = np.array([y_mpg, y_mpg_svr, y_mpg_lasso]).T).sort_values(by=legends[0])
-df_pyrim_ = pd.DataFrame(columns = legends2, data = np.array([y_pyrim, y_pyrim_svr, y_pyrim_lasso, y_pyrim_gbr]).T).sort_values(by=legends2[0])
+legends = ['Original data', 'SVR', 'Lasso', 'GBR', 'LGBMR', 'XGB']
+df_housing_ = pd.DataFrame(columns = legends, data = np.array([y_housing, y_housing_svr, y_housing_lasso, y_housing_gbr, y_housing_lgbmr, y_housing_xgb]).T).sort_values(by=legends[0])
+df_mpg_ = pd.DataFrame(columns = legends, data = np.array([y_mpg, y_mpg_svr, y_mpg_lasso, y_mpg_gbr, y_mpg_lgbmr, y_mpg_xgb]).T).sort_values(by=legends[0])
+df_pyrim_ = pd.DataFrame(columns = legends, data = np.array([y_pyrim, y_pyrim_svr, y_pyrim_lasso, y_pyrim_gbr, y_pyrim_lgbmr, y_pyrim_xgb]).T).sort_values(by=legends[0])
 
 
 #Realizamos los gráficos
@@ -94,13 +131,21 @@ ax3.set_title('Dataset pyrim')
 ax1.plot(np.array(df_housing_[legends[0]]))
 ax1.plot(np.array(df_housing_[legends[1]]))
 ax1.plot(np.array(df_housing_[legends[2]]))
+ax1.plot(np.array(df_housing_[legends[3]]))
+ax1.plot(np.array(df_housing_[legends[4]]))
+ax1.plot(np.array(df_housing_[legends[5]]))
 ax2.plot(np.array(df_mpg_[legends[0]]))
 ax2.plot(np.array(df_mpg_[legends[1]]))
 ax2.plot(np.array(df_mpg_[legends[2]]))
+ax2.plot(np.array(df_mpg_[legends[3]]))
+ax2.plot(np.array(df_mpg_[legends[4]]))
+ax2.plot(np.array(df_mpg_[legends[5]]))
 ax3.plot(np.array(df_pyrim_[legends[0]]))
 ax3.plot(np.array(df_pyrim_[legends[1]]))
 ax3.plot(np.array(df_pyrim_[legends[2]]))
-ax3.plot(np.array(df_pyrim_[legends2[3]]))
+ax3.plot(np.array(df_pyrim_[legends[3]]))
+ax3.plot(np.array(df_pyrim_[legends[4]]))
+ax3.plot(np.array(df_pyrim_[legends[5]]))
 
 
 
@@ -108,10 +153,10 @@ ax1.legend(legends)
 ax1.set(xlabel='register', ylabel='Class')
 ax2.legend(legends)
 ax2.set(xlabel='register', ylabel='Class')
-ax3.legend(legends2)
+ax3.legend(legends)
 ax3.set(xlabel='register', ylabel='Class')
 
 
 
-fig.savefig('regression_comparison.png', dpi = 400)
-#fig.savefig('regression_comparison.png')
+#fig.savefig('regression_comparison.png', dpi = 400)
+fig.savefig('regression_comparison.png')
